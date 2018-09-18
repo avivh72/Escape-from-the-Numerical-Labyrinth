@@ -1,0 +1,18 @@
+/**
+ * Creates in instance of the NumericalLabyrinthFrame class, which runs the entire game.
+ * @author Aviv Haber
+ * @author Rian Waterson
+ * @version 1.0
+ */  
+public class NumericalLabyrinthApp
+{
+    /** 
+     * This method calls the NumericalLabyrinthFrame constructor to
+      * create the application. 
+      * @param args  String array that allows command line parameters to be used when executing the program.
+      */ 
+    public static void main (String [] args)
+    {
+        new NumericalLabyrinthFrame();
+    }
+}

@@ -1,0 +1,259 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.*;
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+/**
+ * The class creates an animation used to represent and introduce the story to the user.
+ * 
+ * When the animation is run the user will see our main character Johnny Numbers sitting
+ * at his desk studying for his math exam the next day. While studying he falls asleep, 
+ * getting sucked into the world of the Numerical Labyrinth. A vortex comes out of the 
+ * math book, sucking Johnny in and the screen goes black as johnny screams.
+ * @author Aviv Haber. Redesigned code to run in a for loop instead of with timers June 2. Added the vortex and vortex sound June 3. Approximate Work: 3 hours
+ * @author Rian Waterson. Created the class and wrote the core animation code June 1. Approximate Work: 3 hours
+ * @version 5.0
+ */ 
+public class Introduction extends JPanel
+{
+  /**
+   * stores the image used as a background for the animation
+   * */
+  private BufferedImage bg;
+  
+  /**
+   * stores the audio used for the animation
+   * */
+   private Audio sound;
+  
+    /**
+   * stores whether or not the audio is playing
+   * */
+   private boolean isPlaying=false;
+   
+  /**
+   * stores a gif of a vortex to be used to show Johnny being sucked into the math book
+   * */
+  private Image vortex;
+  
+  /**
+   * stores the different expressions on Johnny's face as he says his lines
+   * */
+  private BufferedImage [] johnFrame= new BufferedImage[4];
+  
+  /**
+   * stores the amount of time the program will sleep for between each iteration of the run loop
+   * */
+  int sleepLength=40;
+  
+  /**
+   * Stores the different things that Johnny says as different things happen
+   * */
+  private String [] dialog1= {"I don't know how I can get all this done by tomorrow!","This math exam will be really hard.","*Yawn* "};
+  
+  /**
+   * count variable to help the movement of different elements of the animation
+   * */
+  private int count1=0;
+  
+  /**
+   * boolean to check whether or not the animation had ended 
+   * */
+  private boolean endAnim=false;
+  
+  /**
+   * stores a flag to see if a paint operation had been carried out, indicating to the program.  
+   * */
+  private int paintCount=0;
+ 
+  /**
+   * stores which string in the dialog1 array is being outputted at that moment
+   * */
+  private int stringName=0;
+  
+  Graphics g;
+  
+  
+   /**
+   * Reads the images to be used in the animation
+   */ 
+  public Introduction ()
+  {
+    sound=new Audio();
+    try 
+    {
+      bg=ImageIO.read (new File ("res/index2.png"));
+      for (int x = 1; x<= 4; x++)
+      {
+        johnFrame[x-1]=ImageIO.read (new File ("res/johnnyRightLarge" +  x +".png"));//"res/johnFrame"  + x + " .png"));
+      }
+      vortex=new ImageIcon("res/vortex.gif").getImage();
+    }
+    catch (IOException e)
+    {
+      System.out.println(e.getMessage());
+    }
+
+  }
+  
+  /**
+   * Draws a spinning arc that erases the animation screen
+   * @param g The graphics object that allows for the drawing of shapes.
+   * @param x The x coordniate of the spiral.
+   */ 
+  public void drawAnimatedSpiral(Graphics g, int x)
+  {  
+    sleepLength=5;
+    g.setColor(Color.BLACK);
+    g.fillArc(-155,-90,950,700,0,x);
+  }
+  
+
+  /**
+   * paint method, paints the different stages of the animation, calls to repaint() redraw the screen with the changed 
+   * elements.
+   * 
+   * Conditionals are marked with numbers and described below
+   * 
+   * 1. The first Conditional checks the current frame being used to draw johnny and changes it as events move forward
+   * 2. The second Conditonal checks the current string being drawn and changes it accordingly
+   * 3. The third Conditional checks if the second part of the animation has finished yet
+   * 4. The fourth Conditional checks if the third part of the animation has finished yet
+   * 
+   * @param g Passes a reference to the graphics class of the frame, allowing the use of the Graphics methods
+   */  
+  public void paint(Graphics g) 
+  {
+    super.paintComponent(g);
+    Graphics2D g2 = (Graphics2D) g;
+    Font font = new Font("Abadi MT Condensed Extra Bold", Font.PLAIN,16);
+    
+    g2.setFont(font);
+    g2.drawImage(bg, 0, 0, null);
+    if (stringName<3)//Conditional 1
+    {
+      g2.drawImage(johnFrame[stringName], 180, 140, null);
+    }
+    else
+    {
+      g2.drawImage(johnFrame[3], 180, 140, null);
+    }
+    
+    g2.setColor(Color.BLUE);
+    g2.fillRect(2, 400, getWidth()-6, 100);
+    
+    g2.setColor(Color.WHITE);
+    g2.drawRect(2, 400, getWidth()-6, 100);
+    
+    if (stringName<3)//Conditional 2
+    {
+      g2.drawString(dialog1[stringName].substring(0,count1),20,430);
+    }
+    else if ( stringName<50)//Conditional 3
+    {
+      g2.drawImage(vortex, 265, 90, null);
+      stringName++;
+      if (!isPlaying)
+      {
+        sound.playVortex();
+        isPlaying=true;
+      }
+    }
+    else if (paintCount<1)//Conditional 4
+    {
+      drawAnimatedSpiral(g2,count1);
+    }
+    else 
+    {
+      g2.setColor(Color.BLACK);
+      g2.fillRect(0, 0, getWidth(),getHeight());
+      g2.setColor(Color.BLUE);
+      g2.fillRect(2, 400, getWidth()-6, 100);
+      g2.setColor(Color.WHITE);
+      g2.drawRect(2, 400, getWidth()-6, 100);
+      g2.setColor(Color.RED);
+      g2.setFont(new Font("Abadi MT Condensed Extra Bold", Font.PLAIN,30));
+      g2.drawString("AAAAAAAAAAAAAAAHHHHHHHHH!",50,450);
+      endAnim=true;
+    }
+  }
+  
+  
+  
+  /**
+   * run method, stays in a loop repaint the screen and changing variables until the animation is done.
+   * 
+   * Conditionals and Loop structures are marked with numbers and described below
+   * 
+   * Conditionals
+   * 1-2. The first and second Conditional change the variables changing animation parts
+   * 
+   * Loop Structures
+   * 1. Runs the animations loop until the final part of the animation has finished
+   * 
+   * @return returns 0
+   */  
+    public int run ()
+    {
+        try
+        {
+            Thread.sleep (1000);
+        }
+        catch (InterruptedException m)
+        {
+            m.getMessage();
+        } 
+      while (endAnim==false)//Loop Structure 1
+      {
+        try
+        {
+          Thread.sleep (sleepLength);
+        }
+        catch (InterruptedException m)
+        {
+          m.getMessage();
+        }  
+        if (stringName<3 && count1>=dialog1[stringName].length())//Conditional 1
+        {
+          count1=0;
+          stringName=stringName+1;
+          try
+          {
+            Thread.sleep (1000);
+          }
+          catch (InterruptedException m)
+          {
+            m.getMessage();
+          }        
+        }
+        else if (stringName>49 && count1>360)//Conditional 2
+        {
+          paintCount++;
+          count1=0;
+        }
+        count1++;
+        repaint();
+      }
+      try
+      {
+          Thread.sleep (3000);
+      }
+      catch (InterruptedException m)
+      {
+          m.getMessage();
+      } 
+      
+      count1=0;
+      sleepLength=40;
+      endAnim=false;
+      paintCount=0;
+      stringName=0;
+      return 0;
+    }
+}

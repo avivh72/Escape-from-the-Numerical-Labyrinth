@@ -1,0 +1,38 @@
+public class KeyHandler implements KeyListener
+{
+    @Override
+    public void keyPressed (KeyEvent k)
+    {
+        if (k.getKeyCode() == KeyEvent.VK_RIGHT)
+        {
+            dir=Direction.RIGHT;
+        }
+        else if (k.getKeyCode() == KeyEvent.VK_LEFT)
+        {
+            dir=Direction.LEFT;
+        }
+        else if (k.getKeyCode() == KeyEvent.VK_DOWN)
+        {
+            dir=Direction.DOWN;
+        }
+        else if (k.getKeyCode() == KeyEvent.VK_UP)
+        {
+            dir=Direction.UP;
+        }
+    }
+    
+    @Override
+    public void keyReleased(KeyEvent k) 
+    {
+    }
+    
+    @Override
+    public void keyTyped (KeyEvent k)
+    {
+    }
+    
+    public Direction getDirection ()
+    {
+        return dir;
+    }
+}

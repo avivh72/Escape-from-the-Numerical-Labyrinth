@@ -1,0 +1,42 @@
+/**
+ * This data class models a button, and is a type of entity. A button
+ * is different from an Entity because it can be either pressed or
+ * not pressed.
+ * @author Aviv Haber
+ * @author Rian Waterson
+ * @version 1.0
+ */ 
+public class Button extends Entity
+{
+    /**
+     * Stores whether the button has been pressed.
+     */ 
+    private boolean pressed;
+    
+    /**
+     * Initilizes the instance variables.
+     */ 
+    public Button (int x, int y, int width, int height)
+    {
+        super (x,y,width,height);
+        pressed=false;
+    }
+    
+    /**
+     * Returns if the entity is pressed.
+     * @return The value of pressed.
+     */ 
+    public boolean getPressed ()
+    {
+        return pressed;
+    }
+    
+    /**
+     * Sets pressed to the specified value.
+     * @param newPressed The new value of pressed.
+     */ 
+    public void setPressed (boolean newPressed)
+    {
+        pressed=newPressed;
+    }
+}

@@ -1,0 +1,118 @@
+/**
+ * This data class models a generic entity, which other classes will be extending.
+ * An entity has an x coordinate, a y coordinate, a width, and a height.
+ * @author Aviv Haber
+ * @author Rian Waterson
+ * @version 1.0
+ */
+
+public class Entity
+{
+    /**
+     * The X coordinate of the entity.
+     */
+    private int x;
+    
+    /**
+     * The Y coordinate of the entity.
+     */
+    private int y;
+    
+    /**
+     * The height coordinate of the entity.
+     */
+    private int height;
+    
+    /**
+     * The width coordinate of the entity.
+     */
+    private int width;
+    
+    /**
+     * Initilizes the instance variables.
+     * @param x The x coordinate.
+     * @param y The y coordinate.
+     * @param width The width.
+     * @param height The height.
+     */ 
+    public Entity (int x, int y, int width, int height)
+    {
+        this.x=x;
+        this.y=y;
+        this.width=width;
+        this.height=height;
+    }
+    
+    /**
+     * Increments the value for X.
+     * @param incAmount The amount to increment.
+     */ 
+    public void incX(int incAmount)
+    {
+        x+=incAmount;
+    }
+    
+    /**
+     * Returns the value of X.
+     * @return The value of X.
+     */ 
+    public int getX()
+    {
+        return x;
+    }
+    
+    /**
+     * Increments the value for X.
+     * @param incAmount The amount to increment.
+     */ 
+    public void incY(int incAmount)
+    {
+        y+=incAmount;
+    }
+    
+    
+    /**
+     * Returns the value of Y.
+     * @return The value of Y.
+     */ 
+    public int getY()
+    {
+        return y;
+    }
+    
+    /**
+     * Sets X to the specified value.
+     * @param newX The new value of X.
+     */ 
+    public void setX (int newX)
+    {
+        x=newX;
+    }
+    
+    /**
+     * Sets Y to the specified value.
+     * @param newY The new value of Y.
+     */ 
+    public void setY (int newY)
+    {
+        y=newY;
+    }
+    
+    /**
+     * Returns the width of the entity.
+     * @return The value of width.
+     */ 
+    public int getWidth()
+    {
+        return width;
+    }
+    
+    /**
+     * Returns the height of the entity.
+     * @return The value of height.
+     */ 
+    public int getHeight()
+    {
+        return height;
+    }
+}

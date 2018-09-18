@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" build="bin/" main="NumericalLabyrinthApp" manifest="" root="src/" work="">
+    <createjar file="meme.jar" flags="5"/>
+    <source>
+      <file active="true" name="NumericalLabyrinthFrame.java" package="" timestamp="06-Jun-2017 10:49:51">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="Timer.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="NumericalLabyrinthApp.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="DirectionHelper.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="HighScoreList.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="LevelReader.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="Level.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="Problem.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="Player.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="MainMenu.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="Entity.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="HighScoreEntry.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="SplashScreen.java" package="" timestamp="06-Jun-2017 03:45:14">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="ProblemGenerator.java" package="" timestamp="06-Jun-2017 03:45:15">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="Room.java" package="" timestamp="06-Jun-2017 03:45:15">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="FractionProblemGenerator.java" package="" timestamp="06-Jun-2017 03:45:15">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="Introduction.java" package="" timestamp="06-Jun-2017 03:45:15">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="Audio.java" package="" timestamp="06-Jun-2017 03:45:15">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="Button.java" package="" timestamp="06-Jun-2017 03:45:15">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="CreditRoll.java" package="" timestamp="06-Jun-2017 03:45:15">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="BossLevel.java" package="" timestamp="06-Jun-2017 03:45:15">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="Boss.java" package="" timestamp="06-Jun-2017 03:45:15">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="MazeLevel.java" package="" timestamp="06-Jun-2017 03:49:43">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="MultiplicationProblemGenerator.java" package="" timestamp="06-Jun-2017 10:44:37">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+      <file name="AlgebraProblemGenerator.java" package="" timestamp="06-Jun-2017 10:47:41">
+        <select from="6658" to="6658"/>
+        <scroll column="3672" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

@@ -1,0 +1,150 @@
+/**
+ * The class mmodels the design for an
+ * algebra problem. It inherits from the abstract class
+ * ProblemGenerator.
+ * @author Aviv Haber. Worked on initially creating the class on May 21. Approximate Work: 3 hours.
+ * @author Rian Waterson. Worked on fixing the many bugs with the class, such as 0 being generated as the answer on June 1. Approximate Work: 3 hours.
+ * @version 5.0
+ */ 
+public class AlgebraProblemGenerator extends ProblemGenerator
+{
+    
+    /**
+     * Actually contains the code for generating a problem of the type "Algebra".
+     * 
+     * String [] answers = holds the array of option to be passed into the created problem object
+     * int indexOfAns = holds the index of the answer within the array of options, so that the correct answer will be known to the problem class
+     * String finalAns = holds a string representation of the answer as a fraction
+     * 
+     * int temp1 = Holds the first value being operated on 
+     * int temp2 = Holds the second value being operated on 
+     * int temp3 = Holds the third value being operated on 
+     * 
+     * Loops and conditional statements are marked with numbers, their descriptions are below
+     * 
+     * Loops
+     * 1 The first loop runs through the three values to be set and operates on them until they fill the conditions required to give a correct answer
+     * 2 The second loop runs through the three elements of the options, excluding the one filled with th answer
+     * 3 The second loop structure allows for the comparison of each value in the array, making sure that non of the options are the same. runs through 3 values
+     * 
+     * 
+     * Conditionals
+     * 1 The first conditional corresponds with the difficulty, setting higher numbers to be operated as the difficulty rises
+     * 2 The second conditional controls whether or the not the program will set the wrong answers, making sure that the right answer is not overwritten
+     * 3 The third conditional compares wrong answers together, making sure that the same wrong answer is not generated more than once
+     * 4 The fourth conditional helps randomize the generation of wrong answers
+     * 5 The fifth conditional does the comparison operation between the current answer and the ones already set. 
+     * 6 The sixth conditional checks whether or not the full loop had been iterated through, so that a valid value for answer could be inputted.
+     * 
+     * @param difficulty The difficulty of the problem to generate.
+     */ 
+    public Problem createProblem (int difficulty)
+    { 
+        /**
+         * Stores the array off answers to be passed into the new problem
+         * */
+        String [] answers={"","",""};
+        
+        /**
+         * storage of the value of the actual answer
+         * */
+        int indexOfAns;
+        
+        /**
+         *  random number used within the random generation of algebra questions
+         * */
+        int temp1=0;
+        
+        /**
+         *  random number used within the random generation of algebra questions
+         * */
+        int temp2=0;
+        
+        /**
+         *  random number used within the random generation of algebra questions
+         * */
+        int temp3=0;
+        
+        /**
+         * Count variable used to check if a valid wrong answer has been generated
+         * */
+        int y;
+        
+        /**
+         * Stores the value of the wrong answer so its validity can be compared and contrasted to the other values
+         * */
+        String wrongAnswer="";
+        
+        
+        switch (difficulty)//Conditional 1
+        {
+            case 1: 
+                do
+            {
+                temp1=randomIntRanged(1,50);
+                temp2=randomIntRanged(1,50);
+            }
+                while (temp1>temp2  || temp1==temp2 ); 
+                
+                problem = "x  + " +  temp1  + " = "   + temp2;
+                answer = temp2-temp1;
+                break;
+            case 3:         
+                do
+            {
+                temp1=randomIntRanged(1,50);
+                temp2=randomIntRanged(1,50);
+            }
+                while (temp1==temp2 || (temp1%temp2)>0);
+                
+                problem = "x  * " +  temp2  + " = "   + temp1 ;
+                answer = temp1/temp2;
+                break;
+            case 2:         
+                do
+            {
+                temp1=randomIntRanged(1,50);
+                temp2=randomIntRanged(1,50);
+                temp3=randomIntRanged(2,12);
+            }
+                while ( (temp1-temp2)%temp3 !=0 || temp1==temp2 || temp2>temp1);//Loop Structure 1
+                
+                
+                problem = temp3 + "x " + " + "+  temp2 +  " = " + temp1;
+                answer = (temp1-temp2)/temp3;
+                break;
+        }
+        
+        indexOfAns=randomIntRanged(0,2);
+        answers[indexOfAns]=Integer.toString(answer);
+        
+        for (int x =0; x<3;x++)//Loop Structure 2
+        {
+            if (x!=indexOfAns)//Conditional 2
+            {         
+                if( (randomIntRanged(0,1))==0)//Conditional 4
+                {
+                    wrongAnswer=Integer.toString(Math.abs(answer+randomIntRanged(temp1,temp2+20)));
+                }
+                else 
+                {
+                    wrongAnswer=Integer.toString(Math.abs(answer-randomIntRanged(temp1,temp2+20)));
+                }
+                for (y =0; y< 3;y++)// Loop Structure 3
+                {
+                    if (answers[y].equals(wrongAnswer))// Conditional 5
+                    {
+                        x--;
+                        break;
+                    }
+                }
+                if (y==3)// Conditional 6
+                {
+                    answers[x]=wrongAnswer;
+                }  
+            }
+        }
+        return (new Problem (problem, answers, indexOfAns));
+    }
+    
+}
